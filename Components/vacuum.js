@@ -50,3 +50,5 @@ class Vacuum{
         })
     }
 }
+
+module.exports = Vacuum;

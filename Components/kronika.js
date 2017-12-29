@@ -34,7 +34,7 @@ class Kronika{
                 let today = new Date();
                 let url = 'http://videoweb.rtvslo.si/podcast/ava_archive04/{year}/{month}/{day}/PrvajutranjakronikaINFO1PR.mp3'
                 let month = (today.getMonth()+1);
-                let day = (today.getDate()-1);
+                let day = (today.getDate());
                 month = (((today.getMonth()+1)+'').length == 1)?'0':''+month;
                 day = (((today.getDate())+'').length == 1)?'0':''+day;
                 url = url.replace('{year}', today.getFullYear()).replace('{month}', month).replace('{day}',day);

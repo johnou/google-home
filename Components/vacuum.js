@@ -46,6 +46,17 @@ class Vacuum{
                 });
                 
             }
+            else if(action == 'action.devices.commands.Dock'){
+                request.get('http://job.pevecyan.com:3000/vacuum/dock', {},(err,response)=>{
+                    resolve({
+                        'ids':[device.id],
+                        'status':'SUCCESS',
+                        "states": {
+                            "isDocked": true,
+                         }
+                    });
+                });
+            }
             
         })
     }

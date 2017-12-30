@@ -17,6 +17,13 @@ router.post('/',(req,res)=>{
         })
 })
 
+router.get('/test/sync', (req,res)=>{
+    handleSync({},'test')
+        .then(data=>{
+            res.end(JSON.stringify(data));
+        })
+})
+
 function handleRequest(request, accessCode){
     switch(request.inputs[0].intent){
         case 'action.devices.SYNC':
@@ -33,16 +40,20 @@ function handleRequest(request, accessCode){
 function handleSync(request, accessCode){
     return new Promise((resolve, reject)=>{
         console.log('Handle Sync');
-        let devices = components.getSync();
-        let response= {
-            "requestId": request.requestId,
-            "payload": {
-              "agentUserId": "pevechome",
-              "devices": devices
-            }
-        }
-        console.log(response);
-        resolve(response);
+        components.getSync()
+            .then(devices=>{
+                let response= {
+                    "requestId": request.requestId,
+                    "payload": {
+                      "agentUserId": "pevechome",
+                      "devices": devices
+                    }
+                }
+                console.log(response);
+                resolve(response);
+            })
+
+        
     })
 }
 

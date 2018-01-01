@@ -26,7 +26,12 @@ router.post('/token', (req,res)=>{
         })
     }
     else if(grant_type == 'refresh_token'){
-        debugger;
+        let access = 'access';
+        res.json({
+            token_type:'bearer',
+            access_token:access,
+            expires_in:24*60*60
+        })
     }
 })
 
